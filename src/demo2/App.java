@@ -1,7 +1,9 @@
-package demo1;
+package demo2;
 
-class Runner extends Thread{
-	public void run(){
+class Runner implements Runnable{
+
+	@Override
+	public void run() {
 		for (int i = 0; i < 10; i++) {
 			System.out.println("Hello " + i);
 			
@@ -11,16 +13,19 @@ class Runner extends Thread{
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
+		}		
 	}
+	
 }
 
 public class App {
 	public static void main(String[] args) {
-		Runner runner1 = new Runner();
-		Runner runner2 = new Runner();
-
-		runner1.start();
-		runner2.start();
+		
+		Thread t1 = new Thread(new Runner());
+		Thread t2 = new Thread(new Runner());
+		
+		t1.start();
+		t2.start();
 	}
+	
 }
